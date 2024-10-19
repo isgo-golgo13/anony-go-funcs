@@ -32,11 +32,12 @@ func SyncFuncExecAsyncFunc(text string, delay time.Duration) {
 
 func main() {
 
-	fmt.Println("In main()")
-	//var wg sync.WaitGroup
-	//wg.Add(2)
+	fmt.Println("Lauching Async and Non-Async Funcs")
+	var wg sync.WaitGroup
+	wg.Add(1)
+
 	var duration_secs time.Duration = (3) * time.Second
-	//Publish("Fire", duration_secs, &wg)
+	AsyncFunc("Async", duration_secs, &wg)
 	SyncFuncExecAsyncFunc("Sync-to-Async", duration_secs)
-	//wg.Wait()
+	wg.Wait()
 }
